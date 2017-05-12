@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {Store} from "@ngrx/store";
+import {State} from "./state-management/state/main.state";
+import {Actions} from "./state-management/actions/main.actions";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
 }

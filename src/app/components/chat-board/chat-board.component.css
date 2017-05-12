@@ -1,0 +1,13 @@
+.chat-board .message {
+  float: left;
+  clear: both;
+}
+
+.chat-board .message:not(.message-left) {
+  float: right;
+  clear: both;
+}
+
+.yo {
+  color: red;
+}
