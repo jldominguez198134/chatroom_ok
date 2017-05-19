@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import {Store} from "@ngrx/store";
-import {State} from "../../state-management/state/main.state";
-import {Actions} from "../../state-management/actions/main.actions";
+import {MessagesService} from "../../services/messages.service";
 
 @Component({
   selector: 'app-text-editor',
@@ -15,7 +13,7 @@ export class TextEditorComponent implements OnInit {
   userHolder: string;
   messageHolder: string;
 
-  constructor(private store:Store<State>) {
+  constructor(private messagesService: MessagesService) {
     this.userHolder = 'Nombre de usuario';
     this.messageHolder = 'Tu mensaje';
   }
@@ -26,12 +24,9 @@ export class TextEditorComponent implements OnInit {
 
   enviaMsg() {
     console.log(this.msgs);
-    this.store.dispatch({
-      type: Actions.INCREMENT,
-      payload: {
-        message: this.msgs,
-        user: this.user
-      }
+    this.messagesService.pushMessage({
+      message: this.msgs,
+      username: this.user
     });
   }
 }

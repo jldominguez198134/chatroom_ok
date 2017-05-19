@@ -8,6 +8,9 @@ import {TextEditorComponent} from "./components/text-editor/text-editor.componen
 import {ChatBoardComponent} from "./components/chat-board/chat-board.component";
 import {StoreModule} from "@ngrx/store";
 import {mainStoreReducer} from "./state-management/reducers/main.reducer";
+import {AngularFireModule} from "angularfire2";
+import {environment} from "../environments/environment";
+import {MessagesService} from "./services/messages.service";
 
 @NgModule({
   declarations: [
@@ -19,9 +22,10 @@ import {mainStoreReducer} from "./state-management/reducers/main.reducer";
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.provideStore({mainStoreReducer})
+    StoreModule.provideStore({mainStoreReducer}),
+    AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  providers: [MessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

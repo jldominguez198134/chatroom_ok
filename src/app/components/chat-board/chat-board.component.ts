@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {State} from "../../state-management/state/main.state";
+import {AngularFireDatabase} from "angularfire2";
 
 @Component({
   selector: 'app-chat-board',
@@ -9,13 +8,16 @@ import {State} from "../../state-management/state/main.state";
 })
 export class ChatBoardComponent implements OnInit {
 
-  listMenssage:Array<any>;
+  listMenssage: Array<any>;
 
-  constructor(private store:Store<State>) {
-    store.select('mainStoreReducer').subscribe((state) => {
+  constructor(private db: AngularFireDatabase) {
+    db.list('/messages').subscribe((datos) => {
+      this.listMenssage = datos;
+    });
+    /*store.select('mainStoreReducer').subscribe((state) => {
       this.listMenssage = state['arrayMessage'];
       console.log(this.listMenssage);
-    });
+    });*/
   }
 
   ngOnInit() {

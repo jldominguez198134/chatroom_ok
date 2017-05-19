@@ -4,12 +4,14 @@ import {Actions} from "../actions/main.actions";
 
 export const mainStoreReducer: ActionReducer<State> = (state = intitialState, action: Action) => {
   switch (action.type) {
-    case Actions.INCREMENT: {
-      let arrTemp = state.arrayMessage;
-      arrTemp.push(action.payload['message']);
+    case Actions.SEND_MESSAGE: {
+      state.arrayMessage.push(action.payload);
+      return state;
+    }
+    case Actions.GET_MESSAGES: {
       return {
-        arrayMessage: arrTemp
-      }
+        arrayMessage: action.payload
+      };
     }
     default: {
       return state;

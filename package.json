@@ -8,7 +8,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "firebase:login": "firebase login",
+    "firebase:init": "firebase init",
+    "firebase:deploy": "firebase deploy"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +27,10 @@
     "@ngrx/store": "^2.2.2",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "firebase": "^3.9.0",
+    "promise-polyfill": "^6.0.2",
+    "angularfire2": "^2.0.0-beta.7-pre"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",
